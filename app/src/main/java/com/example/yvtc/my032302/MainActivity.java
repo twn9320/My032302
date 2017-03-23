@@ -10,7 +10,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-
+    int s= -1;
+    int tmp;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,6 +55,34 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int which) {
                 Log.d("DLG","使用者按下確定");
                 tv.setText(ed.getText().toString());
+            }
+        });
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Log.d("DLG","使用者按下取消");
+            }
+        });
+        builder.show();
+    }
+    public  void click3(View v){
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("選項測試");
+        final String fruit[] = getResources().getStringArray(R.array.fruits);
+        tmp = s;
+        builder.setSingleChoiceItems(R.array.fruits, s, new DialogInterface.OnClickListener() { //-1代表一開始都不選
+            @Override
+            public void onClick(DialogInterface dialog, int which) {   //which 代表選第幾個
+                tmp = which;   //tmp 表示暫時選什麼
+            }
+        });
+        builder.setPositiveButton("確定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Log.d("DLG","使用者按下確定");
+                TextView tv = (TextView)findViewById(R.id.textView2);
+                s=tmp;   //s表示真的選什麼
+                tv.setText(fruit[s]);
             }
         });
         builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
