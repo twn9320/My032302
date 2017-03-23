@@ -1,5 +1,6 @@
 package com.example.yvtc.my032302;
 
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -165,6 +166,7 @@ public class MainActivity extends AppCompatActivity {
 
         LayoutInflater inflater = LayoutInflater.from(MainActivity.this);
         View mv= inflater.inflate(R.layout.custom_dialog_layout,null);
+
         Button btn = (Button) mv.findViewById(R.id.button6);
         final TextView tv5 = (TextView) mv.findViewById(R.id.textView5);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -182,5 +184,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         builder.show();
+    }
+
+    public void click7(View v){
+        final ProgressDialog pd = new ProgressDialog(MainActivity.this);
+        pd.setTitle("進度框");
+        pd.setCancelable(false);
+        pd.setMessage("請稍後..");
+        pd.show();
+        new Thread(){     //多執行緒  使進度顯示三秒後自動消失
+            public void run(){      /*通常會用在資料擷取時*/
+                super.run();
+                try {
+                    Thread.sleep(3000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                pd.dismiss();
+            }
+        }.start();
     }
 }
