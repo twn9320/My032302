@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog.Builder builder=new AlertDialog.Builder(MainActivity.this); //設定框架
         builder.setTitle("對話框測試");
         builder.setMessage("測試");
-        builder.setPositiveButton("確定", new DialogInterface.OnClickListener() {  //設定按下確認鍵
+        builder.setPositiveButton("確定", new DialogInterface.OnClickListener() {  //打完new 按O選擇後 即會跳出下方程式碼(onClick)
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Log.d("DLG","使用者按下確定");
@@ -34,6 +36,28 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Log.d("DLG","使用者按下看說明");
+            }
+        });
+        builder.show();
+    }
+
+    public void click2(View v){
+        final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        builder.setTitle("輸入測試");
+        final EditText ed = new EditText(MainActivity.this); //加入final 下面 ed.getText就不會有紅線
+        builder.setView(ed);
+        final TextView tv = (TextView)findViewById(R.id.textView); //加入final 下面tv.setText 就不會有紅線
+        builder.setPositiveButton("確定", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Log.d("DLG","使用者按下確定");
+                tv.setText(ed.getText().toString());
+            }
+        });
+        builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Log.d("DLG","使用者按下取消");
             }
         });
         builder.show();
