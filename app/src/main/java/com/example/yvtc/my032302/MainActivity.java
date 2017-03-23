@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     int s= -1;
     int tmp;
     boolean chks[] = new boolean[4];
+    boolean tmpchk[]=new boolean[4];
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -121,7 +122,8 @@ public class MainActivity extends AppCompatActivity {
         AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setTitle("多選測試");
         final String fruit[] = getResources().getStringArray(R.array.fruits);
-        builder.setMultiChoiceItems(R.array.fruits, chks, new DialogInterface.OnMultiChoiceClickListener() {
+        tmpchk = chks.clone();  // 將chks陣列存到tmpchk陣列
+        builder.setMultiChoiceItems(R.array.fruits, tmpchk, new DialogInterface.OnMultiChoiceClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which, boolean isChecked) {
 
@@ -133,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("DLG","使用者按下確定");
                 StringBuilder sb = new StringBuilder();  //用來累加字串的類別
                 int i ;
+                chks = tmpchk.clone();
                 for(i=0;i<fruit.length;i++){
                     if(chks[i]){
                         sb.append(fruit[i]+" ");  //append用來累加字串到sb
