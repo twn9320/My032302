@@ -11,7 +11,7 @@
     tools:context="com.example.yvtc.my032302.MainActivity">
 
     <Button
-        android:text="Button"
+        android:text="多鍵"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -20,7 +20,7 @@
         android:onClick="click1" />
 
     <Button
-        android:text="Button"
+        android:text="輸入"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/button"
@@ -41,7 +41,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
     <Button
-        android:text="Button"
+        android:text="單選"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/button2"
@@ -58,4 +58,23 @@
         android:layout_alignBaseline="@+id/button3"
         android:layout_alignBottom="@+id/button3"
         android:layout_alignStart="@+id/textView" />
+
+    <Button
+        android:text="列表"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/button3"
+        android:layout_alignParentStart="true"
+        android:id="@+id/button4"
+        android:onClick="click4" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView3"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        android:layout_alignBaseline="@+id/button4"
+        android:layout_alignBottom="@+id/button4"
+        android:layout_alignStart="@+id/textView2" />
 </RelativeLayout>
