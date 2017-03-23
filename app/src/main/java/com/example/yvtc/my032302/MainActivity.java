@@ -80,9 +80,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Log.d("DLG","使用者按下確定");
-                TextView tv = (TextView)findViewById(R.id.textView2);
-                s=tmp;   //s表示真的選什麼
-                tv.setText(fruit[s]);
+                if(tmp>-1){
+                    TextView tv = (TextView)findViewById(R.id.textView2);
+                    s=tmp;   //s表示真的選什麼
+                    tv.setText(fruit[s]);
+                }
             }
         });
         builder.setNegativeButton("取消", new DialogInterface.OnClickListener() {
