@@ -42,11 +42,13 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void click2(View v){
-        final AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
         builder.setTitle("輸入測試");
         final EditText ed = new EditText(MainActivity.this); //加入final 下面 ed.getText就不會有紅線
-        builder.setView(ed);
         final TextView tv = (TextView)findViewById(R.id.textView); //加入final 下面tv.setText 就不會有紅線
+        builder.setMessage("請輸入訊息");
+        builder.setIcon(android.R.drawable.ic_dialog_info); //加入圖示
+        builder.setView(ed);
         builder.setPositiveButton("確定", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
